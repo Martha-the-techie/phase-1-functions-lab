@@ -32,5 +32,8 @@
     "mocha": "5.2.0",
     "mocha-jsdom": "~1.1.0",
     "mocha-multi": "1.0.1"
+  },
+  "dependencies": {
+    "npm-install": "^1.8.29"
   }
 }
