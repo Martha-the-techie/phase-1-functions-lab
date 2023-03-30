@@ -1,30 +1,34 @@
-function distanceFromHqInBlocks(someValue, secondValue, belowHqStreet){
-  return 43 - 42
-} 
-const someValue = subtract(43, 42)
-console.log(someValue)
-
-const secondValue = subtract(50, 42)
-console.log(secondValue)
-
-const belowHqStreet = subtract(42, 34)
-console.log(belowHqStreet)
-
-
-
-function distanceFromHqInFeet(someValue){
-distanceFromHqInBlocks(someValue);
-  // call the distanceFromHqInBlocks function from inside the distanceFromHqInFeet function,
-  // passing the argument from distanceFromHqInFeet into distanceFromHqInBlocks
-
-  // the return value of distanceFromHqInBlocks can then be used to calculate feet
+function distanceFromHqInBlocks(pickupLocation) {
+  const hq = 42;
+  return Math.abs(hq - pickupLocation);
 }
 
-function distacnceTravelledInFeet(start, destination){
-  //returns the number of feet traveled
+function distanceFromHqInFeet(pickupLocation) {
+  const blocks = distanceFromHqInBlocks(pickupLocation);
+  const feetPerBlock = 264;
+  return blocks * feetPerBlock;
+}
+
+function distanceTravelledInFeet(start, destination) {
+  const blocks = Math.abs(destination - start);
+  const feetPerBlock = 264;
+  return blocks * feetPerBlock;
 }
 
 function calculatesFarePrice(start, destination) {
-    //returns the fare for the customer
+  const feet = distanceTravelledInFeet(start, destination);
+  let fare = 0;
+
+  if (feet <= 400) {
+    fare = 0;
+  } else if (feet > 400 && feet <= 2000) {
+    fare = (feet - 400) * 0.02;
+  } else if (feet > 2000 && feet < 2500) {
+    fare = 25;
+  } else if (feet >= 2500) {
+    return 'cannot travel that far';
+  }
+
+  return fare;
 }
 
